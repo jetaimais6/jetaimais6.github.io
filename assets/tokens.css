@@ -10,28 +10,33 @@
   /* 声明本页配色模式：让滚动条、表单控件、默认背景也跟随 */
   color-scheme: light;
 
-  /* 表面（背景层） */
-  --surface:          #ffffff;
-  --surface-raised:   #f6f7f9;   /* 卡片、按钮底色 */
-  --surface-sunken:   #eef1f4;   /* 更低的层级 */
+  /* 表面（背景层）—— 带极淡粉调，与头像呼应 */
+  --surface:          #fffdfd;
+  --surface-raised:   #fdf5f7;   /* 卡片、按钮底色 */
+  --surface-sunken:   #f7eaee;   /* 更低的层级 */
 
-  /* 文字 */
-  --text:             #1a1d21;
-  --text-muted:       #5c6672;
-  --text-faint:       #8b95a3;
+  /* 文字 —— 暖调深灰，避免与粉色底冲突的冷灰 */
+  --text:             #241d20;
+  --text-muted:       #6b5a61;
+  --text-faint:       #9a8a91;
 
   /* 线条 */
-  --line:             #e3e7ec;
-  --line-strong:      #cfd6de;
+  --line:             #f0dfe4;
+  --line-strong:      #e2c9d1;
 
-  /* 强调色 */
-  --accent:           #2563eb;
-  --accent-hover:     #1d4ed8;
+  /* 强调色 —— 粉色系
+     浅色主题用较深的玫瑰粉，保证白字对比度达标（≥4.5:1）
+     深色主题用较亮的粉，保证在深底上可读 */
+  --accent:           #b83b64;
+  --accent-hover:     #9d2f53;
   --accent-text:      #ffffff;   /* 强调色之上的文字 */
 
-  /* 效果 */
-  --shadow-sm:        0 1px 2px rgba(16, 24, 40, .06);
-  --shadow-md:        0 4px 12px rgba(16, 24, 40, .08);
+  /* 粉色浅底（取自头像背景色 #efc1cb），用于标签、徽章等 */
+  --surface-tint:     #fdf0f4;
+
+  /* 效果 —— 阴影带一点粉，避免灰影在粉底上发脏 */
+  --shadow-sm:        0 1px 2px rgba(90, 40, 58, .06);
+  --shadow-md:        0 4px 14px rgba(90, 40, 58, .10);
 
   /* 尺寸 */
   --radius:           12px;
@@ -63,40 +68,42 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --surface:        #16181d;
-    --surface-raised: #1e2128;
-    --surface-sunken: #101216;
-    --text:           #e8eaed;
-    --text-muted:     #9aa4b2;
-    --text-faint:     #6f7a88;
-    --line:           #2c313a;
-    --line-strong:    #3a424e;
-    --accent:         #6ea8fe;
-    --accent-hover:   #8bbaff;
-    --accent-text:    #0d1117;
+    --surface:        #1a1417;
+    --surface-raised: #241a1f;
+    --surface-sunken: #120d10;
+    --text:           #f2e6ea;
+    --text-muted:     #b5a0a8;
+    --text-faint:     #857077;
+    --line:           #362830;
+    --line-strong:    #473640;
+    --accent:         #ef8fae;
+    --accent-hover:   #f4a7c0;
+    --accent-text:    #2a1018;
+    --surface-tint:   #2a1d23;
     --shadow-sm:      0 1px 2px rgba(0, 0, 0, .4);
-    --shadow-md:      0 4px 12px rgba(0, 0, 0, .5);
-    --header-glass:   rgba(22, 24, 29, .88);
+    --shadow-md:      0 4px 14px rgba(0, 0, 0, .5);
+    --header-glass:   rgba(26, 20, 23, .88);
   }
 }
 
 /* 手动强制深色：优先级最高 */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --surface:        #16181d;
-  --surface-raised: #1e2128;
-  --surface-sunken: #101216;
-  --text:           #e8eaed;
-  --text-muted:     #9aa4b2;
-  --text-faint:     #6f7a88;
-  --line:           #2c313a;
-  --line-strong:    #3a424e;
-  --accent:         #6ea8fe;
-  --accent-hover:   #8bbaff;
-  --accent-text:    #0d1117;
+  --surface:        #1a1417;
+  --surface-raised: #241a1f;
+  --surface-sunken: #120d10;
+  --text:           #f2e6ea;
+  --text-muted:     #b5a0a8;
+  --text-faint:     #857077;
+  --line:           #362830;
+  --line-strong:    #473640;
+  --accent:         #ef8fae;
+  --accent-hover:   #f4a7c0;
+  --accent-text:    #2a1018;
+  --surface-tint:   #2a1d23;
   --shadow-sm:      0 1px 2px rgba(0, 0, 0, .4);
-  --shadow-md:      0 4px 12px rgba(0, 0, 0, .5);
-  --header-glass:   rgba(22, 24, 29, .88);
+  --shadow-md:      0 4px 14px rgba(0, 0, 0, .5);
+  --header-glass:   rgba(26, 20, 23, .88);
 }
 
 /* 手动强制浅色 */
