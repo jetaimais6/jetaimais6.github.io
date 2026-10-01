@@ -90,6 +90,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .site-nav { display: flex; gap: 1.25rem; font-size: .95rem; }
 .site-nav a { color: var(--text-muted); }
 .site-nav a:hover { color: var(--accent); text-decoration: none; }
+.site-nav a.is-active {
+  color: var(--accent);
+  font-weight: 600;
+}
 
 /* ---------- 主题切换按钮 ---------- */
 .theme-toggle {
@@ -299,6 +303,74 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 /* 待补充内容的卡片（填好后删掉 is-placeholder 类即可） */
 .card.is-placeholder { border-style: dashed; }
 .card.is-placeholder h3 a { color: var(--text-muted); }
+
+/* 卡片上的标签 */
+.tags-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: .6rem 0 0;
+}
+
+.tag {
+  display: inline-block;
+  font-size: .78rem;
+  line-height: 1.7;
+  padding: .05rem .55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--surface-tint);
+  letter-spacing: var(--track-label);
+}
+.tag:hover { text-decoration: none; border-color: var(--accent); }
+
+/* 标签云 */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .5rem 0 0;
+}
+.tag-lg { font-size: .9rem; padding: .25rem .8rem; }
+.tag .count { color: var(--text-faint); font-size: .85em; margin-left: .15em; }
+
+/* ---------- 列表页页头 ---------- */
+.page-head { padding: 3.5rem 0 1rem; }
+.page-head h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+  line-height: 1.25;
+  letter-spacing: var(--track-title);
+  margin: 0 0 .75rem;
+  text-wrap: balance;
+}
+.page-head .lead {
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 38em;
+}
+
+/* 「查看全部」链接 */
+.more-link { margin: 1.25rem 0 0; font-size: .95rem; }
+
+/* ---------- 分页 ---------- */
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.pager-info {
+  font-size: .88rem;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
 
 /* ---------- 联系列表 ---------- */
 .link-list { list-style: none; padding: 0; margin: 1rem 0 0; }

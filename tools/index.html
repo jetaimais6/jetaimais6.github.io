@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 与其它页面一致：先应用已保存的主题，避免闪烁 -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<title>功能分区 · Jetaimais</title>
+<meta name="description" content="Jetaimais 的功能分区：订阅、标签与归档。">
+<meta name="author" content="Jetaimais">
+<link rel="canonical" href="https://jetaimais6.github.io/tools/">
+<meta name="theme-color" content="#fffdfd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1417" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jetaimais">
+<meta property="og:title" content="功能分区 · Jetaimais">
+<meta property="og:description" content="Jetaimais 的功能分区：订阅、标签与归档。">
+<meta property="og:url" content="https://jetaimais6.github.io/tools/">
+<meta property="og:image" content="https://jetaimais6.github.io/assets/og-image.png">
+<meta property="og:locale" content="zh_CN">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="功能分区 · Jetaimais">
+<meta name="twitter:description" content="Jetaimais 的功能分区：订阅、标签与归档。">
+<meta name="twitter:image" content="https://jetaimais6.github.io/assets/og-image.png">
+
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="Jetaimais" href="https://jetaimais6.github.io/feed.xml">
+
+<link rel="preload" href="../assets/tokens.css" as="style">
+<link rel="preload" href="../assets/style.css" as="style">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/theme.js" defer></script>
+
+</head>
+<body>
+
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="../">Jetaimais</a>
+
+    <nav class="site-nav" aria-label="主导航">
+      <a href="../#about">关于</a>
+      <a href="../posts/">文章</a>
+      <a href="../tools/" class="is-active">功能</a>
+      <a href="../#contact">联系</a>
+    </nav>
+
+    <button class="theme-toggle" type="button" aria-label="切换主题">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+<section class="page-head">
+      <p class="eyebrow">功能</p>
+      <h1>功能分区</h1>
+      <p class="lead">找内容的入口，以及订阅方式。</p>
+    </section>
+
+    <section class="section">
+      <h2>订阅</h2>
+      <ul class="link-list">
+        <li><span class="k">RSS</span> <a href="../feed.xml">feed.xml</a> <span class="muted">— 用阅读器订阅，新文章自动推送</span></li>
+        <li><span class="k">站点地图</span> <a href="../sitemap.xml">sitemap.xml</a></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>标签</h2>
+      <p class="muted">共 3 个标签，点进去看该主题下的全部文章。</p>
+      <p class="tag-cloud"><a class="tag tag-lg" href="../tools/tags/%E9%A3%8E%E6%B9%BF%E5%85%8D%E7%96%AB/">风湿免疫 <span class="count">2</span></a><a class="tag tag-lg" href="../tools/tags/%E4%BD%93%E6%A0%BC%E6%A3%80%E6%9F%A5/">体格检查 <span class="count">1</span></a><a class="tag tag-lg" href="../tools/tags/%E8%87%AA%E8%BA%AB%E6%8A%97%E4%BD%93/">自身抗体 <span class="count">1</span></a></p>
+    </section>
+
+    <section class="section">
+      <h2>归档</h2>
+      <p class="muted">目前共 2 篇文章，<a href="../posts/">查看全部 →</a></p>
+      <ul class="card-list">
+<li class="card">
+  <h3><a href="../posts/sjogren-syndrome.html">干燥综合征</a></h3>
+  <p>口干，吞咽干食困难，SSA 与 SSB 阳性。</p>
+  <p class="meta"><time datetime="2026-10-01">2026-10-01</time> · 知识笔记</p>
+  <p class="tags-inline"><a class="tag" href="../tools/tags/%E9%A3%8E%E6%B9%BF%E5%85%8D%E7%96%AB/">风湿免疫</a><a class="tag" href="../tools/tags/%E8%87%AA%E8%BA%AB%E6%8A%97%E4%BD%93/">自身抗体</a></p>
+</li>
+<li class="card">
+  <h3><a href="../posts/raynaud-phenomenon.html">雷诺现象</a></h3>
+  <p>雷诺现象的典型表现：遇冷后手指痉挛、变白甚至发紫。</p>
+  <p class="meta"><time datetime="2026-10-01">2026-10-01</time> · 知识笔记</p>
+  <p class="tags-inline"><a class="tag" href="../tools/tags/%E9%A3%8E%E6%B9%BF%E5%85%8D%E7%96%AB/">风湿免疫</a><a class="tag" href="../tools/tags/%E4%BD%93%E6%A0%BC%E6%A3%80%E6%9F%A5/">体格检查</a></p>
+</li>
+</ul>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© <span id="year">2026</span> · Jetaimais · 由 GitHub Pages 托管</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
