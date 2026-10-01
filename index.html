@@ -63,7 +63,16 @@
   "author": {
     "@type": "Person",
     "name": "jetaimais6",
-    "url": "https://github.com/jetaimais6"
+    "url": "https://github.com/jetaimais6",
+    "email": "2787148660@qq.com",
+    "sameAs": [
+      "https://github.com/jetaimais6"
+    ]
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "2787148660@qq.com",
+    "contactType": "个人联系"
   }
 }
 </script>
@@ -170,10 +179,13 @@
       <p>最直接的方式是邮件，也可以在这些地方找到我：</p>
       <ul class="link-list">
         <!-- 改成你的真实信息；不用的行直接删掉 -->
+        <li>
+          <span class="k">Email</span>
+          <!-- 邮箱由脚本拼接填入（防爬虫抓取）。无脚本时由下方 noscript 回退。 -->
+          <a class="js-email" href="#" data-u="2787148660" data-d="qq.com" rel="me">加载中…</a>
+          <noscript><a href="mailto:2787148660@qq.com">2787148660@qq.com</a></noscript>
+        </li>
         <li><span class="k">GitHub</span> <a href="https://github.com/jetaimais6" target="_blank" rel="noopener">@jetaimais6</a></li>
-        <!-- 邮箱：填上你的真实邮箱后取消注释
-        <li><span class="k">Email</span> <a href="mailto:you@example.com">you@example.com</a></li>
-        -->
       </ul>
     </section>
 
@@ -189,7 +201,21 @@
 
 <script src="assets/theme.js"></script>
 <script>
+  /* 页脚年份自动更新 */
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* 邮箱链接：把用户名与域名拼成完整地址。
+     直接写在 HTML 里的 mailto 地址会被垃圾邮件爬虫批量抓取，
+     所以拆成 data-u / data-d 两段，运行时再合成。 */
+  (function () {
+    var links = document.querySelectorAll('.js-email');
+    for (var i = 0; i < links.length; i++) {
+      var el = links[i];
+      var addr = el.getAttribute('data-u') + '\u0040' + el.getAttribute('data-d');
+      el.setAttribute('href', 'mailto:' + addr);
+      el.textContent = addr;
+    }
+  })();
 </script>
 
 </body>
