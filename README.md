@@ -40,16 +40,27 @@ python -m http.server 8000
 令牌采用语义化命名（描述「用途」而非「颜色」）：
 
 ```css
---surface:        #ffffff;   /* 页面底色 */
---surface-raised: #f6f7f9;   /* 卡片、按钮底色 */
---text:           #1a1d21;   /* 正文 */
---text-muted:     #5c6672;   /* 次要文字 */
---accent:         #2563eb;   /* 主色 */
+--surface:        #fffdfd;   /* 页面底色（带极淡粉调） */
+--surface-raised: #fdf5f7;   /* 卡片、按钮底色 */
+--surface-tint:   #fdf0f4;   /* 标签、徽章底色 */
+--text:           #241d20;   /* 正文 */
+--text-muted:     #6b5a61;   /* 次要文字 */
+--accent:         #b83b64;   /* 主色：玫瑰粉 */
 --accent-text:    #ffffff;   /* 主色之上的文字 */
 ```
 
+> 配色取自头像背景色 `#efc1cb` 的同色系。**主色是深玫瑰粉**而不是那个淡粉，
+> 因为淡粉上放白字对比度不足（只有约 1.5:1），按钮文字会看不清。
+> 当前 `#b83b64` 配白字为 **5.46:1**，符合 WCAG AA。
+
 浅色主题在 `:root`，深色主题在 `:root[data-theme="dark"]`
 和 `@media (prefers-color-scheme: dark)` 两处——**改配色请两处同步**。
+
+改完配色后可跑对比度校验：
+
+```bash
+node ../setup/check-contrast.js
+```
 
 ### 主题切换
 
@@ -72,18 +83,24 @@ python -m http.server 8000
 
 ### 内容
 
-直接编辑 `index.html`，搜索 `改成你的`。
+直接编辑 `index.html`。所有文字都是真实内容，没有占位符。
 
 ### 头像
 
-把图片放到 `assets/avatar.jpg`，然后取消 `index.html` 中 `<img class="avatar">`
-那一行的注释。
+`assets/avatar.jpg`（480×480）。
+
+原图是 1080×1080、手写标记在**左下角且贴边**，直接当头像会看不清。
+所以用 [`../setup/make-avatar.py`](../setup/make-avatar.py) 做了处理：
+把标记居中、背景用主色填充，圆形裁切后构图完整。
+
+换头像时：直接替换 `assets/avatar.jpg` 即可。若是类似构图（主体偏角落），
+可改脚本里的 `BOX` 坐标重新生成。
 
 ### 更换社交预览图
 
 `assets/og-image.png` 是分享到微信/Twitter 时的缩略图。要换：
 - 直接替换该文件（建议 **1200×630**，PNG 或 JPG）
-- 或修改 [`../setup/make-og-image.py`](../setup/make-og-image.py) 后重新生成
+- 或修改 [`../setup/make-og-image.py`](../setup/make-og-image.py) 后重新生成（配色与站点一致）
 
 ## 部署
 
