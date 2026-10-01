@@ -1,8 +1,8 @@
-# jetaimais6.github.io
+# Jetaimais
 
-我的个人主页 —— 纯 HTML/CSS，零依赖、无构建步骤。
+个人主页 —— 纯 HTML/CSS，零依赖、无构建步骤。
 
-🌐 <https://jetaimais6.github.io/>
+🌐 <https://jetaimais6.github.io/>　（仓库名与域名仍是 `jetaimais6`，那是账号 ID）
 
 ## 结构
 
