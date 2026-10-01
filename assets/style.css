@@ -1,0 +1,271 @@
+/* ============================================================
+   个人主页样式
+   想换配色只改下面 :root 里的变量即可，其余不用动。
+   ============================================================ */
+
+/* ---------- 颜色变量（浅色主题） ---------- */
+:root {
+  --bg:        #ffffff;
+  --bg-soft:   #f6f7f9;
+  --fg:        #1a1d21;
+  --fg-muted:  #5c6672;
+  --border:    #e3e7ec;
+  --accent:    #2563eb;
+  --accent-fg: #ffffff;
+  --header-glass: rgba(255, 255, 255, .88);
+  --radius:    12px;
+  --maxw:      720px;
+}
+
+/* ---------- 深色主题：跟随系统设置自动切换 ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #16181d;
+    --bg-soft:   #1e2128;
+    --fg:        #e8eaed;
+    --fg-muted:  #9aa4b2;
+    --border:    #2c313a;
+    --accent:    #6ea8fe;
+    --accent-fg: #0d1117;
+    --header-glass: rgba(22, 24, 29, .88);
+  }
+}
+
+/* ---------- 基础 ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;   /* 锚点跳转时避开吸顶导航 */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ---------- 链接 ---------- */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 键盘用户跳过导航 */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: .6rem 1rem;
+  border-radius: 0 0 var(--radius) 0;
+  z-index: 100;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- 页头 ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  /* 不透明底色兜底：不支持 backdrop-filter 的浏览器也不会看到文字重叠 */
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* 支持毛玻璃的浏览器再叠加半透明效果 */
+@supports (backdrop-filter: blur(10px)) {
+  .site-header {
+    background: var(--header-glass);
+    backdrop-filter: saturate(180%) blur(10px);
+  }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.75rem;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--fg);
+  letter-spacing: .01em;
+}
+.brand:hover { text-decoration: none; color: var(--accent); }
+
+.site-nav { display: flex; gap: 1.25rem; font-size: .95rem; }
+.site-nav a { color: var(--fg-muted); }
+.site-nav a:hover { color: var(--accent); text-decoration: none; }
+
+/* ---------- 首屏 ---------- */
+.hero { padding: 4.5rem 0 2.5rem; }
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  margin: 0 0 .75rem;
+}
+
+.lead {
+  font-size: 1.1rem;
+  color: var(--fg-muted);
+  margin: 0 0 1.75rem;
+  max-width: 34em;
+}
+.lead strong { color: var(--fg); font-weight: 600; }
+
+/* ---------- 按钮 ---------- */
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+.btn {
+  display: inline-block;
+  padding: .6rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--fg);
+  font-size: .95rem;
+  font-weight: 500;
+  background: var(--bg-soft);
+  transition: transform .12s ease, border-color .12s ease;
+}
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+/* ---------- 内容分区 ---------- */
+.section {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.section h2 {
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+  letter-spacing: -.01em;
+}
+
+.section p { margin: 0 0 1rem; }
+.muted { color: var(--fg-muted); font-size: .95rem; }
+
+/* ---------- 技能标签 ---------- */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding: 0;
+  margin: 1.25rem 0 0;
+}
+.tags li {
+  font-size: .85rem;
+  padding: .25rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg-muted);
+  background: var(--bg-soft);
+}
+
+/* ---------- 卡片列表 ---------- */
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: .9rem;
+}
+
+.card {
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  transition: border-color .12s ease, transform .12s ease;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.card h3 { margin: 0 0 .35rem; font-size: 1.05rem; }
+.card p  { margin: 0; color: var(--fg-muted); font-size: .95rem; }
+.card .meta { margin-top: .5rem; font-size: .82rem; color: var(--fg-muted); opacity: .8; }
+
+/* ---------- 联系列表 ---------- */
+.link-list { list-style: none; padding: 0; margin: 1rem 0 0; }
+.link-list li {
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+.link-list li:last-child { border-bottom: 0; }
+.link-list .k {
+  min-width: 5rem;
+  color: var(--fg-muted);
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 3rem;
+  color: var(--fg-muted);
+  font-size: .88rem;
+}
+.site-footer p { margin: 0; }
+
+/* ---------- 小屏微调 ---------- */
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .hero { padding-top: 3rem; }
+  .link-list li { flex-direction: column; gap: .15rem; }
+}
+
+/* ---------- 打印 ---------- */
+@media print {
+  .site-header, .site-footer, .hero-actions { display: none; }
+  body { font-size: 12pt; }
+}
+
+/* ---------- 尊重「减少动效」偏好 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 改成你的名字和一句话简介 -->
+<title>我的个人主页</title>
+<meta name="description" content="个人主页 —— 简介、文章与联系方式。">
+
+<!-- 社交分享卡片 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="我的个人主页">
+<meta property="og:description" content="简介、文章与联系方式。">
+<meta property="og:url" content="https://jetaimais6.github.io/">
+
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🙂</text></svg>">
+</head>
+<body>
+
+<!-- 无障碍：键盘用户可用 Tab 直接跳到正文 -->
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <!-- 改成你的名字 -->
+    <a class="brand" href="/">我的主页</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="#about">关于</a>
+      <a href="#posts">文章</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <!-- ============ 首屏 ============ -->
+    <section class="hero">
+      <!-- 想放头像就加一张图片到 assets/ 目录，然后取消下面这行注释 -->
+      <!-- <img class="avatar" src="assets/avatar.jpg" alt="我的头像" width="112" height="112"> -->
+
+      <!-- 改成你的名字 -->
+      <h1>你好，欢迎来到我的主页</h1>
+
+      <!-- 改成你的一句话自我介绍 -->
+      <p class="lead">
+        我是一名 <strong>开发者</strong>，这里放我的 <strong>简介、文章与项目</strong>。
+        把这句话换成你自己的介绍即可。
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/jetaimais6" rel="me noopener" target="_blank">GitHub</a>
+        <a class="btn" href="#contact">联系我</a>
+      </div>
+    </section>
+
+    <!-- ============ 关于 ============ -->
+    <section id="about" class="section">
+      <h2>关于</h2>
+      <p>
+        这里写两三句你的背景。比如：目前在做什么、擅长什么、对什么感兴趣。
+        个人主页的作用是让对方在 30 秒内明白你是谁、能做什么。
+      </p>
+      <p>
+        第二段可以写经历或技能。保持简短，没人会读长段落。
+      </p>
+
+      <ul class="tags" aria-label="技能标签">
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>Python</li>
+        <li>用户体验</li>
+      </ul>
+    </section>
+
+    <!-- ============ 文章 / 项目 ============ -->
+    <section id="posts" class="section">
+      <h2>文章与项目</h2>
+      <p class="muted">下面是示例条目，改成你自己的内容即可。想加文章就复制一个 &lt;li&gt;。</p>
+
+      <ul class="card-list">
+        <li class="card">
+          <h3><a href="#">示例文章标题</a></h3>
+          <p>一句话说明这篇文章讲了什么。</p>
+          <p class="meta">2026-09-30</p>
+        </li>
+        <li class="card">
+          <h3><a href="#">示例项目名称</a></h3>
+          <p>这个项目解决了什么问题，用了什么技术。</p>
+          <p class="meta">2026-08-15</p>
+        </li>
+        <li class="card">
+          <h3><a href="#">另一个示例</a></h3>
+          <p>删除不需要的条目，或继续往下加。</p>
+          <p class="meta">2026-07-02</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ 联系 ============ -->
+    <section id="contact" class="section">
+      <h2>联系</h2>
+      <p>最直接的方式是邮件，也可以在这些地方找到我：</p>
+      <ul class="link-list">
+        <!-- 改成你的真实信息；不用的行直接删掉 -->
+        <li><span class="k">Email</span> <a href="mailto:you@example.com">you@example.com</a></li>
+        <li><span class="k">GitHub</span> <a href="https://github.com/jetaimais6" target="_blank" rel="noopener">@jetaimais6</a></li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <!-- 年份自动更新，名字改成你的 -->
+    <p>© <span id="year">2026</span> · 由 GitHub Pages 托管</p>
+  </div>
+</footer>
+
+<script>
+  // 自动更新页脚年份，省得每年手动改
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
