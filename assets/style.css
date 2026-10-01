@@ -197,6 +197,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-color: var(--accent-hover);
 }
 
+/* 邮箱按钮：颜色与其它次要按钮一致，别让默认链接色破坏按钮外观 */
+.btn.js-email { color: var(--text); }
+.btn.js-email:hover { color: var(--accent); }
+
+/* 无脚本回退：<noscript> 内文字为空，用 CSS 生成内容补上按钮文字。
+   用 ::after 是因为脚本禁用时 :empty 仍会匹配，但纯文本放这儿不占位。 */
+.noscript-email::after { content: "邮件联系"; }
+
 /* ---------- 内容分区 ---------- */
 .section {
   padding: 2.5rem 0;

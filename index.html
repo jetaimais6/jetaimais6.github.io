@@ -130,6 +130,10 @@
 
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://github.com/jetaimais6" rel="me noopener" target="_blank">GitHub</a>
+        <!-- 邮件直达按钮：同样由脚本拼接地址（防爬虫）。
+             无脚本时 <noscript> 文字为空，由 CSS ::after 补上「邮件联系」。 -->
+        <a class="btn js-email" href="#" data-u="2787148660" data-d="qq.com" data-label="邮件联系" rel="me">加载中…</a>
+        <noscript><a class="btn noscript-email" href="mailto:2787148660@qq.com"></a></noscript>
         <a class="btn" href="#contact">联系我</a>
       </div>
     </section>
@@ -206,14 +210,17 @@
 
   /* 邮箱链接：把用户名与域名拼成完整地址。
      直接写在 HTML 里的 mailto 地址会被垃圾邮件爬虫批量抓取，
-     所以拆成 data-u / data-d 两段，运行时再合成。 */
+     所以拆成 data-u / data-d 两段，运行时再合成。
+     带 data-label 的（如首屏按钮）显示为按钮文字，否则显示完整邮箱。 */
   (function () {
     var links = document.querySelectorAll('.js-email');
     for (var i = 0; i < links.length; i++) {
       var el = links[i];
       var addr = el.getAttribute('data-u') + '\u0040' + el.getAttribute('data-d');
+      var label = el.getAttribute('data-label');
       el.setAttribute('href', 'mailto:' + addr);
-      el.textContent = addr;
+      el.textContent = label || addr;
+      if (label) el.setAttribute('title', addr);   /* 悬停可见完整邮箱 */
     }
   })();
 </script>
