@@ -49,8 +49,15 @@
 <link rel="apple-touch-icon" href="assets/favicon.svg">
 
 <!-- ============ 样式 ============ -->
+<!-- 预加载：让浏览器在解析到 <link> 之前就开始下载这两个关键 CSS，
+     少一个往返延迟。CSS 是渲染阻塞资源，这一步对首屏影响最直接。 -->
+<link rel="preload" href="assets/tokens.css" as="style">
+<link rel="preload" href="assets/style.css" as="style">
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/style.css">
+
+<!-- 主题切换：defer 让它与 HTML 并行下载，且不阻塞渲染 -->
+<script src="assets/theme.js" defer></script>
 
 <!-- ============ 结构化数据（帮助搜索引擎理解你是谁） ============ -->
 <script type="application/ld+json">
@@ -203,7 +210,6 @@
   </div>
 </footer>
 
-<script src="assets/theme.js"></script>
 <script>
   /* 页脚年份自动更新 */
   document.getElementById('year').textContent = new Date().getFullYear();
