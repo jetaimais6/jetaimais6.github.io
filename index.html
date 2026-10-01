@@ -4,18 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- 防主题闪烁：必须在 CSS 之前同步执行，不能改成 defer/async -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<!-- ============ SEO ============ -->
 <!-- 改成你的名字和一句话简介 -->
 <title>我的个人主页</title>
-<meta name="description" content="个人主页 —— 简介、文章与联系方式。">
+<meta name="description" content="个人主页 —— 技术、随笔与记录。">
+<meta name="author" content="jetaimais6">
+<link rel="canonical" href="https://jetaimais6.github.io/">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16181d" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="index, follow">
 
-<!-- 社交分享卡片 -->
+<!-- ============ 社交分享卡片 ============ -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="我的个人主页">
 <meta property="og:title" content="我的个人主页">
-<meta property="og:description" content="简介、文章与联系方式。">
+<meta property="og:description" content="个人主页 —— 技术、随笔与记录。">
 <meta property="og:url" content="https://jetaimais6.github.io/">
+<meta property="og:image" content="https://jetaimais6.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="我的个人主页">
+<meta property="og:locale" content="zh_CN">
 
+<!-- Twitter 用 summary_large_image 才会显示大图 -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="我的个人主页">
+<meta name="twitter:description" content="个人主页 —— 技术、随笔与记录。">
+<meta name="twitter:image" content="https://jetaimais6.github.io/assets/og-image.png">
+
+<!-- ============ 图标 ============ -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+
+<!-- ============ 样式 ============ -->
+<link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🙂</text></svg>">
+
+<!-- ============ 结构化数据（帮助搜索引擎理解你是谁） ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "我的个人主页",
+  "url": "https://jetaimais6.github.io/",
+  "inLanguage": "zh-CN",
+  "author": {
+    "@type": "Person",
+    "name": "jetaimais6",
+    "url": "https://github.com/jetaimais6"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -26,11 +77,26 @@
   <div class="wrap header-inner">
     <!-- 改成你的名字 -->
     <a class="brand" href="/">我的主页</a>
+
     <nav class="site-nav" aria-label="主导航">
       <a href="#about">关于</a>
-      <a href="#posts">文章</a>
+      <a href="#work">作品</a>
       <a href="#contact">联系</a>
     </nav>
+
+    <button class="theme-toggle" type="button" aria-label="切换主题">
+      <!-- 月亮：浅色模式点击可切到深色 -->
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <!-- 太阳：深色模式点击可切到浅色 -->
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </button>
   </div>
 </header>
 
@@ -39,6 +105,8 @@
 
     <!-- ============ 首屏 ============ -->
     <section class="hero">
+      <p class="eyebrow">个人主页</p>
+
       <!-- 想放头像就加一张图片到 assets/ 目录，然后取消下面这行注释 -->
       <!-- <img class="avatar" src="assets/avatar.jpg" alt="我的头像" width="112" height="112"> -->
 
@@ -47,7 +115,7 @@
 
       <!-- 改成你的一句话自我介绍 -->
       <p class="lead">
-        我是一名 <strong>开发者</strong>，这里放我的 <strong>简介、文章与项目</strong>。
+        我是一名 <strong>开发者</strong>，在这里记录<strong>技术、随笔与想法</strong>。
         把这句话换成你自己的介绍即可。
       </p>
 
@@ -64,9 +132,7 @@
         这里写两三句你的背景。比如：目前在做什么、擅长什么、对什么感兴趣。
         个人主页的作用是让对方在 30 秒内明白你是谁、能做什么。
       </p>
-      <p>
-        第二段可以写经历或技能。保持简短，没人会读长段落。
-      </p>
+      <p>第二段可以写经历或技能。保持简短，没人会读长段落。</p>
 
       <ul class="tags" aria-label="技能标签">
         <li>JavaScript</li>
@@ -76,26 +142,24 @@
       </ul>
     </section>
 
-    <!-- ============ 文章 / 项目 ============ -->
-    <section id="posts" class="section">
-      <h2>文章与项目</h2>
-      <p class="muted">下面是示例条目，改成你自己的内容即可。想加文章就复制一个 &lt;li&gt;。</p>
+    <!-- ============ 作品 / 文章 ============
+         注意：这里的链接指向真实内容或明确标注「待补充」，
+         不放 href="#" 的假链接——点了没反应比没有更糟。 -->
+    <section id="work" class="section">
+      <h2>作品与文章</h2>
+      <p class="muted">下面是待补充的占位条目。填上真实链接后，删掉卡片上的 <code>is-placeholder</code> 类。</p>
 
       <ul class="card-list">
-        <li class="card">
-          <h3><a href="#">示例文章标题</a></h3>
+        <li class="card is-placeholder">
+          <!-- 有真实链接后改成 <a href="posts/xxx.html"> -->
+          <h3><span>示例文章标题（待补充）</span></h3>
           <p>一句话说明这篇文章讲了什么。</p>
-          <p class="meta">2026-09-30</p>
+          <p class="meta">2026-09-30 · 待补充</p>
         </li>
-        <li class="card">
-          <h3><a href="#">示例项目名称</a></h3>
+        <li class="card is-placeholder">
+          <h3><span>示例项目名称（待补充）</span></h3>
           <p>这个项目解决了什么问题，用了什么技术。</p>
-          <p class="meta">2026-08-15</p>
-        </li>
-        <li class="card">
-          <h3><a href="#">另一个示例</a></h3>
-          <p>删除不需要的条目，或继续往下加。</p>
-          <p class="meta">2026-07-02</p>
+          <p class="meta">2026-08-15 · 待补充</p>
         </li>
       </ul>
     </section>
@@ -106,8 +170,10 @@
       <p>最直接的方式是邮件，也可以在这些地方找到我：</p>
       <ul class="link-list">
         <!-- 改成你的真实信息；不用的行直接删掉 -->
-        <li><span class="k">Email</span> <a href="mailto:you@example.com">you@example.com</a></li>
         <li><span class="k">GitHub</span> <a href="https://github.com/jetaimais6" target="_blank" rel="noopener">@jetaimais6</a></li>
+        <!-- 邮箱：填上你的真实邮箱后取消注释
+        <li><span class="k">Email</span> <a href="mailto:you@example.com">you@example.com</a></li>
+        -->
       </ul>
     </section>
 
@@ -116,13 +182,13 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <!-- 年份自动更新，名字改成你的 -->
+    <!-- 年份自动更新 -->
     <p>© <span id="year">2026</span> · 由 GitHub Pages 托管</p>
   </div>
 </footer>
 
+<script src="assets/theme.js"></script>
 <script>
-  // 自动更新页脚年份，省得每年手动改
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 

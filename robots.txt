@@ -1,0 +1,6 @@
+# 允许所有搜索引擎抓取
+User-agent: *
+Allow: /
+
+# 你的站点地图
+Sitemap: https://jetaimais6.github.io/sitemap.xml

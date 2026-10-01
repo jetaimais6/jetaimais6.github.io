@@ -1,0 +1,105 @@
+/* ============================================================
+   tokens.css —— 设计令牌（Design Tokens）
+   参考 AnAcretiondisk9986.github.io 的做法：用「语义化」变量名，
+   描述「这是什么」，而不是「这是什么颜色」。
+   这样换主题时只改这一处，全站自动跟随。
+   ============================================================ */
+
+/* ---------- 浅色主题 ---------- */
+:root {
+  /* 声明本页配色模式：让滚动条、表单控件、默认背景也跟随 */
+  color-scheme: light;
+
+  /* 表面（背景层） */
+  --surface:          #ffffff;
+  --surface-raised:   #f6f7f9;   /* 卡片、按钮底色 */
+  --surface-sunken:   #eef1f4;   /* 更低的层级 */
+
+  /* 文字 */
+  --text:             #1a1d21;
+  --text-muted:       #5c6672;
+  --text-faint:       #8b95a3;
+
+  /* 线条 */
+  --line:             #e3e7ec;
+  --line-strong:      #cfd6de;
+
+  /* 强调色 */
+  --accent:           #2563eb;
+  --accent-hover:     #1d4ed8;
+  --accent-text:      #ffffff;   /* 强调色之上的文字 */
+
+  /* 效果 */
+  --shadow-sm:        0 1px 2px rgba(16, 24, 40, .06);
+  --shadow-md:        0 4px 12px rgba(16, 24, 40, .08);
+
+  /* 尺寸 */
+  --radius:           12px;
+  --radius-sm:        8px;
+  --measure:          720px;     /* 正文最大宽度 */
+  --gutter:           1.25rem;
+  --header-h:         3.75rem;
+
+  /* 字体 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong,
+                SimSun, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+               "Liberation Mono", Menlo, monospace;
+
+  /* 字距：中文标题加宽字距会明显更精致（参考仓库大量使用 0.14–0.22em） */
+  --track-label:      .08em;   /* 小标签 */
+  --track-title:      .02em;   /* 大标题 */
+  --track-eyebrow:    .16em;   /* 眉标（全大写小字） */
+
+  /* 玻璃效果底色（支持 backdrop-filter 时使用） */
+  --header-glass:     rgba(255, 255, 255, .88);
+}
+
+/* ---------- 深色主题 ----------
+   优先跟随手动选择（html[data-theme="dark"]），
+   没有手动选择时跟随系统设置 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface:        #16181d;
+    --surface-raised: #1e2128;
+    --surface-sunken: #101216;
+    --text:           #e8eaed;
+    --text-muted:     #9aa4b2;
+    --text-faint:     #6f7a88;
+    --line:           #2c313a;
+    --line-strong:    #3a424e;
+    --accent:         #6ea8fe;
+    --accent-hover:   #8bbaff;
+    --accent-text:    #0d1117;
+    --shadow-sm:      0 1px 2px rgba(0, 0, 0, .4);
+    --shadow-md:      0 4px 12px rgba(0, 0, 0, .5);
+    --header-glass:   rgba(22, 24, 29, .88);
+  }
+}
+
+/* 手动强制深色：优先级最高 */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface:        #16181d;
+  --surface-raised: #1e2128;
+  --surface-sunken: #101216;
+  --text:           #e8eaed;
+  --text-muted:     #9aa4b2;
+  --text-faint:     #6f7a88;
+  --line:           #2c313a;
+  --line-strong:    #3a424e;
+  --accent:         #6ea8fe;
+  --accent-hover:   #8bbaff;
+  --accent-text:    #0d1117;
+  --shadow-sm:      0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-md:      0 4px 12px rgba(0, 0, 0, .5);
+  --header-glass:   rgba(22, 24, 29, .88);
+}
+
+/* 手动强制浅色 */
+:root[data-theme="light"] {
+  color-scheme: light;
+}

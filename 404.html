@@ -3,21 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- 与首页一致：先应用已保存的主题，避免闪烁 -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    } catch (e) {}
+  })();
+</script>
+
 <title>页面不存在 · 404</title>
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16181d" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/assets/tokens.css">
 <link rel="stylesheet" href="/assets/style.css">
-<meta name="robots" content="noindex">
 </head>
 <body>
+
+<a class="skip-link" href="#main">跳到正文</a>
+
 <main id="main">
   <div class="wrap">
     <section class="hero">
-      <h1>404</h1>
-      <p class="lead">这个页面不存在，可能已经移动或被删除了。</p>
+      <p class="eyebrow">错误 404</p>
+      <h1>页面不存在</h1>
+      <p class="lead">链接可能有误，或者这个页面已经移动、被删除了。</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/">回到首页</a>
+        <button class="btn theme-toggle-inline" type="button" onclick="history.back()">返回上一页</button>
       </div>
     </section>
   </div>
 </main>
+
 </body>
 </html>
