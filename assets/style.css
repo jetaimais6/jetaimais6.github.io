@@ -375,8 +375,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 /* ---------- 图集 ---------- */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  /* 缩略图控制得小一些：默认约 150px 一列，屏窄时自动换行。
+     用 min() 兜底，避免窄屏上因 minmax 最小值过大而横向溢出。 */
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+  gap: .75rem;
   margin-top: 1rem;
 }
 
