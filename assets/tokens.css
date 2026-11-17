@@ -1,112 +1,121 @@
 /* ============================================================
-   tokens.css —— 设计令牌（Design Tokens）
-   参考 AnAcretiondisk9986.github.io 的做法：用「语义化」变量名，
-   描述「这是什么」，而不是「这是什么颜色」。
-   这样换主题时只改这一处，全站自动跟随。
+   tokens.css —— 设计令牌 ·「净庵手记」
+   ------------------------------------------------------------
+   概念：一本在灯下摊开的手记本。纸先于屏，手迹优先，粉色作印章。
+   与旧版的关键差别：不再有「卡片底色」，粉色只作印痕（线、笔触、页码）。
+
+   改配色只改这一个文件。浅色/深色两套需要同步改。
+   设计语言说明见仓库根目录 CLD.md 第 2 节。
    ============================================================ */
 
-/* ---------- 浅色主题 ---------- */
+/* ---------- 浅色：暖白纸 ---------- */
 :root {
-  /* 声明本页配色模式：让滚动条、表单控件、默认背景也跟随 */
   color-scheme: light;
 
-  /* 表面（背景层）—— 带极淡粉调，与头像呼应 */
-  --surface:          #fffdfd;
-  --surface-raised:   #fdf5f7;   /* 卡片、按钮底色 */
-  --surface-sunken:   #f7eaee;   /* 更低的层级 */
+  /* 纸 */
+  --paper:          #fcf6f3;
+  --paper-deep:     #f6e9ed;
+  --paper-edge:     #f2e3e8;   /* 纸边/分割 */
 
-  /* 文字 —— 暖调深灰，避免与粉色底冲突的冷灰 */
-  --text:             #241d20;
-  --text-muted:       #6b5a61;
-  --text-faint:       #9a8a91;
+  /* 墨 */
+  --ink:            #2a2024;
+  --ink-soft:       #6f5b63;
+  --ink-faint:      #a08b93;
 
-  /* 线条 */
-  --line:             #f0dfe4;
-  --line-strong:      #e2c9d1;
+  /* 线 */
+  --rule:           rgba(90, 50, 64, .16);
+  --rule-strong:    rgba(90, 50, 64, .34);
 
-  /* 强调色 —— 粉色系
-     浅色主题用较深的玫瑰粉，保证白字对比度达标（≥4.5:1）
-     深色主题用较亮的粉，保证在深底上可读 */
-  --accent:           #b83b64;
-  --accent-hover:     #9d2f53;
-  --accent-text:      #ffffff;   /* 强调色之上的文字 */
-
-  /* 粉色浅底（取自头像背景色 #efc1cb），用于标签、徽章等 */
-  --surface-tint:     #fdf0f4;
-
-  /* 效果 —— 阴影带一点粉，避免灰影在粉底上发脏 */
-  --shadow-sm:        0 1px 2px rgba(90, 40, 58, .06);
-  --shadow-md:        0 4px 14px rgba(90, 40, 58, .10);
-
-  /* 尺寸 */
-  --radius:           12px;
-  --radius-sm:        8px;
-  --measure:          720px;     /* 正文最大宽度 */
-  --gutter:           1.25rem;
-  --header-h:         3.75rem;
+  /* 印章粉 —— #b53c62 在纸与次级纸上均 ≥4.5:1（#c2476d 在次级纸上仅 4.12） */
+  --rose:           #b53c62;
+  --rose-deep:      #93304f;
+  --rose-soft:      #f6d9e2;
+  --on-rose:        #fffafc;   /* 粉底上的文字 */
 
   /* 字体 */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong,
-                SimSun, Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
-               "Liberation Mono", Menlo, monospace;
+  --font-display: "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong,
+                  Georgia, "Times New Roman", serif;
+  --font-body:    "Noto Serif SC", "Source Han Serif SC", "Songti SC", STSong,
+                  SimSun, Georgia, serif;
+  --font-hand:    "LXGW WenKai", "Kaiti SC", STKaiti, KaiTi, "Noto Serif SC",
+                  cursive, serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
 
-  /* 字距：中文标题加宽字距会明显更精致（参考仓库大量使用 0.14–0.22em） */
-  --track-label:      .08em;   /* 小标签 */
-  --track-title:      .02em;   /* 大标题 */
-  --track-eyebrow:    .16em;   /* 眉标（全大写小字） */
+  /* 字号（手记本：标题大字、正文舒适） */
+  --fs-display: clamp(2.1rem, 6vw, 3.5rem);
+  --fs-h1:      clamp(1.7rem, 4.4vw, 2.5rem);
+  --fs-h2:      clamp(1.25rem, 2.6vw, 1.5rem);
+  --fs-lead:    clamp(1.02rem, 1.9vw, 1.16rem);
+  --fs-body:    17px;
+  --fs-small:   .88rem;
+  --fs-note:    .8rem;
 
-  /* 玻璃效果底色（支持 backdrop-filter 时使用） */
-  --header-glass:     rgba(255, 255, 255, .88);
+  /* 字距 */
+  --track-display: .04em;
+  --track-title:   .02em;
+  --track-note:    .18em;
+
+  /* 行高 */
+  --lh-body:    1.95;
+  --lh-tight:   1.35;
+  --lh-note:    1.7;
+
+  /* 版心与留白 */
+  --measure:    680px;      /* 阅读宽度 */
+  --page-max:   1060px;     /* 页面总宽 */
+  --rail:       92px;       /* 左侧页边注栏宽 */
+  --gutter:     clamp(1.15rem, 4vw, 2.5rem);
+  --space-1:    .5rem;
+  --space-2:    .9rem;
+  --space-3:    1.5rem;
+  --space-4:    2.4rem;
+  --space-5:    3.6rem;
+  --space-6:    5.5rem;
+
+  /* 纸纹（内联 SVG，零请求） */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+
+  /* 动效 */
+  --ease:       cubic-bezier(.22, .61, .36, 1);
+  --dur-fast:   180ms;
+  --dur:        320ms;
 }
 
-/* ---------- 深色主题 ----------
-   优先跟随手动选择（html[data-theme="dark"]），
-   没有手动选择时跟随系统设置 */
+/* ---------- 深色：夜里的纸 ---------- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --surface:        #1a1417;
-    --surface-raised: #241a1f;
-    --surface-sunken: #120d10;
-    --text:           #f2e6ea;
-    --text-muted:     #b5a0a8;
-    --text-faint:     #857077;
-    --line:           #362830;
-    --line-strong:    #473640;
-    --accent:         #ef8fae;
-    --accent-hover:   #f4a7c0;
-    --accent-text:    #2a1018;
-    --surface-tint:   #2a1d23;
-    --shadow-sm:      0 1px 2px rgba(0, 0, 0, .4);
-    --shadow-md:      0 4px 14px rgba(0, 0, 0, .5);
-    --header-glass:   rgba(26, 20, 23, .88);
+    --paper:        #171114;
+    --paper-deep:   #1f171b;
+    --paper-edge:   #2a1f25;
+    --ink:          #f3e8ec;
+    --ink-soft:     #c0aab3;
+    --ink-faint:    #8b7480;
+    --rule:         rgba(240, 220, 230, .15);
+    --rule-strong:  rgba(240, 220, 230, .32);
+    --rose:         #f28fb0;
+    --rose-deep:    #f7aac4;
+    --rose-soft:    #3a2630;
+    --on-rose:      #2a1018;
   }
 }
 
-/* 手动强制深色：优先级最高 */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --surface:        #1a1417;
-  --surface-raised: #241a1f;
-  --surface-sunken: #120d10;
-  --text:           #f2e6ea;
-  --text-muted:     #b5a0a8;
-  --text-faint:     #857077;
-  --line:           #362830;
-  --line-strong:    #473640;
-  --accent:         #ef8fae;
-  --accent-hover:   #f4a7c0;
-  --accent-text:    #2a1018;
-  --surface-tint:   #2a1d23;
-  --shadow-sm:      0 1px 2px rgba(0, 0, 0, .4);
-  --shadow-md:      0 4px 14px rgba(0, 0, 0, .5);
-  --header-glass:   rgba(26, 20, 23, .88);
+  --paper:        #171114;
+  --paper-deep:   #1f171b;
+  --paper-edge:   #2a1f25;
+  --ink:          #f3e8ec;
+  --ink-soft:     #c0aab3;
+  --ink-faint:    #8b7480;
+  --rule:         rgba(240, 220, 230, .15);
+  --rule-strong:  rgba(240, 220, 230, .32);
+  --rose:         #f28fb0;
+  --rose-deep:    #f7aac4;
+  --rose-soft:    #3a2630;
+  --on-rose:      #2a1018;
 }
 
-/* 手动强制浅色 */
 :root[data-theme="light"] {
   color-scheme: light;
 }

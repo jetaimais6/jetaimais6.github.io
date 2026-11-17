@@ -8,6 +8,14 @@
 <script>
   (function () {
     try {
+      /* 支持 ?theme=light|dark：便于分享指定主题的链接，也方便截图核对。
+         会写回 localStorage，之后访问都沿用。 */
+      var q = (location.search.match(/[?&]theme=(light|dark)/) || [])[1];
+      if (q) {
+        localStorage.setItem('theme', q);
+        document.documentElement.setAttribute('data-theme', q);
+        return;
+      }
       var t = localStorage.getItem('theme');
       if (t === 'light' || t === 'dark') {
         document.documentElement.setAttribute('data-theme', t);
@@ -20,8 +28,8 @@
 <meta name="description" content="Jetaimais 的文章列表，按时间倒序。">
 <meta name="author" content="Jetaimais">
 <link rel="canonical" href="https://jetaimais6.github.io/posts/">
-<meta name="theme-color" content="#fffdfd" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1a1417" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fdf8f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171114" media="(prefers-color-scheme: dark)">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -53,6 +61,9 @@
 
 <a class="skip-link" href="#main">跳到正文</a>
 
+<!-- 页边注：宽屏时在右侧竖排显示，作为手记本的页边痕迹 -->
+<span class="edge-note" aria-hidden="true">Jetaimais · 净庵手记</span>
+
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="../">Jetaimais</a>
@@ -83,28 +94,28 @@
   <div class="wrap">
 <section class="page-head">
       <p class="eyebrow">文章</p>
-      <h1>全部文章</h1>
+      <h1 data-mark="文">全部文章</h1>
       <p class="lead">按时间倒序。想按主题找，去<a href="../tools/tags/">标签</a>或<a href="../tools/">功能</a>。</p>
     </section>
 
     <section class="section">
       <ul class="card-list">
 <li class="card">
+  <p class="meta"><time datetime="2026-10-01" title="2026-10-01">10.01</time><span class="cat">随笔</span></p>
   <h3><a href="../posts/autumn-remembrance.html">秋天的怀念</a></h3>
-  <p>数日不计，秋天竟悄悄然的来到我的鞋边，风吹起金条般的落叶擦过我的裤脚，顺便带着它那桂花香气。</p>
-  <p class="meta"><time datetime="2026-10-01">2026-10-01</time> · 随笔</p>
+  <p class="excerpt">数日不计，秋天竟悄悄然的来到我的鞋边，风吹起金条般的落叶擦过我的裤脚，顺便带着它那桂花香气。</p>
   <p class="tags-inline"><a class="tag" href="../tools/tags/%E7%A7%8B%E5%A4%A9/">秋天</a><a class="tag" href="../tools/tags/%E9%9A%8F%E7%AC%94/">随笔</a></p>
 </li>
 <li class="card">
+  <p class="meta"><time datetime="2026-10-01" title="2026-10-01">10.01</time><span class="cat">知识笔记</span></p>
   <h3><a href="../posts/sjogren-syndrome.html">干燥综合征</a></h3>
-  <p>口干，吞咽干食困难，SSA 与 SSB 阳性。</p>
-  <p class="meta"><time datetime="2026-10-01">2026-10-01</time> · 知识笔记</p>
+  <p class="excerpt">口干，吞咽干食困难，SSA 与 SSB 阳性。</p>
   <p class="tags-inline"><a class="tag" href="../tools/tags/%E9%A3%8E%E6%B9%BF%E5%85%8D%E7%96%AB/">风湿免疫</a><a class="tag" href="../tools/tags/%E8%87%AA%E8%BA%AB%E6%8A%97%E4%BD%93/">自身抗体</a></p>
 </li>
 <li class="card">
+  <p class="meta"><time datetime="2026-10-01" title="2026-10-01">10.01</time><span class="cat">知识笔记</span></p>
   <h3><a href="../posts/raynaud-phenomenon.html">雷诺现象</a></h3>
-  <p>雷诺现象的典型表现：遇冷后手指痉挛、变白甚至发紫。</p>
-  <p class="meta"><time datetime="2026-10-01">2026-10-01</time> · 知识笔记</p>
+  <p class="excerpt">雷诺现象的典型表现：遇冷后手指痉挛、变白甚至发紫。</p>
   <p class="tags-inline"><a class="tag" href="../tools/tags/%E9%A3%8E%E6%B9%BF%E5%85%8D%E7%96%AB/">风湿免疫</a><a class="tag" href="../tools/tags/%E4%BD%93%E6%A0%BC%E6%A3%80%E6%9F%A5/">体格检查</a></p>
 </li>
 </ul>

@@ -8,6 +8,14 @@
 <script>
   (function () {
     try {
+      /* 支持 ?theme=light|dark：便于分享指定主题的链接，也方便截图核对。
+         会写回 localStorage，之后访问都沿用。 */
+      var q = (location.search.match(/[?&]theme=(light|dark)/) || [])[1];
+      if (q) {
+        localStorage.setItem('theme', q);
+        document.documentElement.setAttribute('data-theme', q);
+        return;
+      }
       var t = localStorage.getItem('theme');
       if (t === 'light' || t === 'dark') {
         document.documentElement.setAttribute('data-theme', t);
@@ -20,8 +28,8 @@
 <meta name="description" content="雷诺现象的典型表现：遇冷后手指痉挛、变白甚至发紫。">
 <meta name="author" content="Jetaimais">
 <link rel="canonical" href="https://jetaimais6.github.io/posts/raynaud-phenomenon.html">
-<meta name="theme-color" content="#fffdfd" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1a1417" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fdf8f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171114" media="(prefers-color-scheme: dark)">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="article">
@@ -64,6 +72,9 @@
 
 <a class="skip-link" href="#main">跳到正文</a>
 
+<!-- 页边注：宽屏时在右侧竖排显示，作为手记本的页边痕迹 -->
+<span class="edge-note" aria-hidden="true">Jetaimais · 净庵手记</span>
+
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="../">Jetaimais</a>
@@ -95,8 +106,8 @@
 <article class="article">
 
       <header class="article-header">
-        <p class="eyebrow">知识笔记</p>
-        <h1>雷诺现象</h1>
+        <p class="eyebrow">知识笔记 · 2026</p>
+        <h1 data-mark="文">雷诺现象</h1>
         <p class="article-meta">
           <time datetime="2026-10-01">2026-10-01</time>
         </p>
