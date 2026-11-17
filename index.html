@@ -183,7 +183,7 @@
       <h2 data-mark="记">近期文章</h2>
 
       <!-- AUTO:CARDS:START -->
-      <!-- 本区域由构建脚本生成，请勿手改；加文章请改 content/*.md -->
+      <!-- 本区域由构建脚本自动生成，请勿手改 -->
       <ul class="card-list">
       <li class="card">
         <p class="meta"><time datetime="2026-10-01" title="2026-10-01">10.01</time><span class="cat">随笔</span></p>
@@ -204,10 +204,28 @@
         <p class="tags-inline"><a class="tag" href="tools/tags/%E9%A3%8E%E6%B9%BF%E5%85%8D%E7%96%AB/">风湿免疫</a><a class="tag" href="tools/tags/%E4%BD%93%E6%A0%BC%E6%A3%80%E6%9F%A5/">体格检查</a></p>
       </li>
       </ul>
-            <p class="more-link"><a href="posts/">进入文章列表 →</a></p>
       <!-- AUTO:CARDS:END -->
+      <p class="more-link"><a href="posts/">进入文章列表 →</a></p>
     </section>
 
+
+    <!-- ============ 最近照片 ============ -->
+    <section id="photos" class="section">
+      <h2 data-mark="影">最近照片</h2>
+
+      <!-- AUTO:PHOTOS:START -->
+      <!-- 本区域由构建脚本自动生成，请勿手改 -->
+      <div class="photo-strip">
+      <figure class="ph ph-mini">
+        <button class="ph-btn" type="button" data-full="photos/full/2026-10-01-sushi.webp" data-alt="2026-10-01-sushi">
+          <img src="photos/thumbs/2026-10-01-sushi.webp" alt="2026-10-01-sushi" loading="lazy" decoding="async">
+        </button>
+
+      </figure>
+      </div>
+      <p class="more-link"><a href="gallery/">全部照片 →</a></p>
+      <!-- AUTO:PHOTOS:END -->
+    </section>
     <!-- ============ 联系 ============ -->
     <section id="contact" class="section">
       <h2 data-mark="信">联系</h2>
@@ -273,6 +291,13 @@
     }
   })();
 </script>
+
+<!-- 照片放大：与图集页共用同一份脚本与对话框 -->
+<dialog class="lightbox" id="lightbox">
+  <button class="lb-close" type="button" aria-label="关闭">×</button>
+  <img class="lb-img" id="lbImg" src="" alt="">
+</dialog>
+<script src="gallery/lightbox.js" defer></script>
 
 </body>
 </html>

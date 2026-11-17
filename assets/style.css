@@ -44,6 +44,18 @@ body::before {
   opacity: .9;
 }
 
+/* 深色模式下白噪点很弱，改用「叠加」让它成为细微的亮斑 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body::before {
+    opacity: .5;
+    mix-blend-mode: screen;
+  }
+}
+:root[data-theme="dark"] body::before {
+  opacity: .5;
+  mix-blend-mode: screen;
+}
+
 body > * { position: relative; z-index: 1; }
 
 /* 版心：内容窄、页面宽，留出手记本的页边 */
@@ -801,6 +813,38 @@ a:hover {
   font-variant-numeric: tabular-nums;
 }
 
+/* ---------- 首页照片条：贴在纸上的一排相纸 ---------- */
+.photo-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(.8rem, 2vw, 1.35rem);
+  margin: var(--space-3) 0 0;
+}
+
+.photo-strip .ph {
+  flex: 0 0 clamp(110px, 18vw, 168px);
+  position: relative;
+}
+/* 轻微错落与各自的倾角，像随手贴上去的 */
+.photo-strip .ph:nth-child(odd) { transform: rotate(-1.1deg); }
+.photo-strip .ph:nth-child(even) { transform: rotate(1.2deg); }
+.photo-strip .ph:nth-child(3n) { transform: translateY(6px) rotate(-.5deg); }
+
+.photo-strip .ph-btn {
+  padding: .34rem .34rem .62rem;   /* 下方留白，做出相纸白边的感觉 */
+  background: var(--paper);
+  box-shadow: 0 2px 6px -3px rgba(90, 40, 58, .28);
+}
+
+.photo-strip .ph figcaption {
+  font-family: var(--font-hand);
+  font-size: var(--fs-note);
+  color: var(--ink-faint);
+  text-align: center;
+  padding-top: .3rem;
+}
+
+/* 点击放大 */
 .lightbox {
   border: 0;
   padding: 0;
