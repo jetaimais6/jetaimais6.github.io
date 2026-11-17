@@ -911,17 +911,29 @@ a:hover {
   .site-nav { order: 3; width: 100%; gap: 1.1rem; padding-top: .1rem; }
   .theme-toggle { position: absolute; top: .8rem; right: 0; }
 
-  /* 目录行改为上下结构：日期在上 */
+  /* 目录行改为上下结构：日期/类别一行，标题与摘要各自一段。
+     注意：不要依赖 grid 单列 + grid-column 覆盖——只要有一个子元素
+     还写着 grid-column:2，网格就会长出隐式第二列，把文字挤成竖排。
+     这里直接改成块级布局，彻底回避该问题。 */
   .card {
-    grid-template-columns: 1fr;
-    gap: .2rem;
+    display: block;
+    padding-block: 1.1rem;
   }
   .card .meta {
-    grid-column: 1;
-    grid-row: auto;
-    margin-bottom: .15rem;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: .5rem;
+    margin-bottom: .3rem;
   }
-  .card h3, .card > p, .card .tags-inline { grid-column: 1; }
+  .card .meta time { font-size: .95rem; }
+  .card h3,
+  .card .excerpt,
+  .card .tags-inline {
+    grid-column: auto;
+  }
+  .card h3 { font-size: 1.08rem; margin-bottom: .25rem; }
+  .card .excerpt { font-size: .93rem; }
 
   .link-list li { grid-template-columns: 1fr; gap: .2rem; }
 
